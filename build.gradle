@@ -6,6 +6,6 @@ repositories {
 }
 
 dependencies {
+    compile 'org.seleniumhq.selenium.fluent:fluent-selenium:1.14.2'
     testCompile 'junit:junit:4.11'
-    testCompile 'org.seleniumhq.selenium.fluent:fluent-selenium:1.14.2'
 }
