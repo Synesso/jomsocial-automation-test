@@ -2,6 +2,7 @@ package jomsocial.activity;
 
 import jomsocial.pages.FrontPage;
 import jomsocial.navigation.NavigateTo;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static jomsocial.users.Users.*;
+import static org.junit.Assert.assertEquals;
 
 public class ActivityLikingTest {
 
@@ -24,8 +26,6 @@ public class ActivityLikingTest {
 
     @Test
     public void userCanLikeAnActivity() {
-        // todo - before all precondition (and teardown?)
-
         String userAMessage = UUID.randomUUID().toString();
         String userBMessage = UUID.randomUUID().toString();
 
@@ -33,13 +33,14 @@ public class ActivityLikingTest {
         FrontPage frontPage = NavigateTo.frontPage();
         frontPage.loginAs(USER_A);
         frontPage.shareStatus(userAMessage);
-       frontPage.loginAs(USER_B);
+        frontPage.loginAs(USER_B);
         frontPage.shareStatus(userBMessage);
 
         // testing user A's ability to like and unlike all activities.
         frontPage.loginAs(USER_A);
         List<StatusActivity> activities = frontPage.statusActivities();
         List<String> messages = Arrays.asList(userAMessage, userBMessage);
+        int countOfActivitiesTested = 0;
         for (StatusActivity activity : activities) {
             if (messages.contains(activity.text())) {
                 activity.mustBeLikeable()
@@ -47,7 +48,9 @@ public class ActivityLikingTest {
                         .mustBeUnlikeable()
                         .unlike()
                         .mustBeLikeable();
+                countOfActivitiesTested++;
             }
         }
+        assertEquals("expected to test 2 activities", 2, countOfActivitiesTested);
     }
 }
