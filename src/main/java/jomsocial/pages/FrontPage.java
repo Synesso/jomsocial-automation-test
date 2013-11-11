@@ -5,8 +5,14 @@ import jomsocial.activity.StatusActivity;
 import jomsocial.resources.Photo;
 import jomsocial.users.User;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.ScreenshotException;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +55,7 @@ public class FrontPage extends WebDriven {
     }
 
     public FrontPage open() {
-        web.get(Config.BASE_URL);
+        web.get(Config.get("BASE_URL"));
         return this;
     }
 

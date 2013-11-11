@@ -1,8 +1,24 @@
 package jomsocial;
 
-public class Config {
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
 
-    // todo - make configurable from environment variables and properties file
-    public static final String BASE_URL = "http://localhost/joomla/index.php/jomsocial";
+public class Config extends Properties {
 
+    @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
+    private static final Config instance = new Config();
+
+    public static String get(String key) {
+        return instance.getProperty(key);
+    }
+
+    private Config() {
+        try {
+            this.load(new FileReader(".env"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
