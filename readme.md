@@ -32,6 +32,12 @@ Create the file `.env` in the base of the project (same level as `build.gradle`)
     # The path to your installation of phantomjs
     PHANTOMJS_BIN = C:/Tools/phantomjs-1.9.2-windows/phantomjs.exe
 
+    # The number of milliseconds selenium should wait for an element before giving up. Defaults to 1500.
+    TIMEOUT = 1500
+
+    # The web driver to use. Choose from DriverName enum values (firefox/phantomjs) Defaults to phantomjs.
+    WEB_DRIVER = firefox
+
 ## Testing
 
 For now there are problems with running the test via Gradle. Run the test in IntelliJ instead. First make sure JomSocial

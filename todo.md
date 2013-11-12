@@ -15,6 +15,8 @@ Capture screenshots on error.
 
 Why does gradle take such a long time to test? Why does it run the same test over and over?
 
+try having separate instances for different users. Does that speed things up? Does it make for better tests?
+
 From Hung:
 
 1. Do you have any kind of test script loader? like we have 200 test scripts and we want to run all of them consiquently
@@ -33,5 +35,3 @@ failed test script for double check?
 
 5. Can you show an example on how to reuse your test script on writing another test script to verify that like action
 will generate global notification?
-
-6. Can you show how to configure the target browser (web driver) for running the test?
