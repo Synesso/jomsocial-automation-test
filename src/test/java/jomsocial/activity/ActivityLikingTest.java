@@ -1,17 +1,13 @@
 package jomsocial.activity;
 
-import jomsocial.pages.FrontPage;
 import jomsocial.navigation.NavigateTo;
-import org.junit.Assert;
+import jomsocial.pages.FrontPage;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
 
-import static java.util.Arrays.asList;
-import static jomsocial.users.Users.*;
+import static jomsocial.users.Users.USER_A;
+import static jomsocial.users.Users.USER_B;
 import static org.junit.Assert.assertEquals;
 
 public class ActivityLikingTest {

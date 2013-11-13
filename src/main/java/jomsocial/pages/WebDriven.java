@@ -2,10 +2,7 @@ package jomsocial.pages;
 
 import jomsocial.config.Config;
 import jomsocial.config.DriverName;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
@@ -65,8 +62,18 @@ public abstract class WebDriven {
         return web.findElements(by).size() > 0;
     }
 
+    // todo - wrap fluent wait with a richer model - one that can waitUntilElementRemoved(element) etc. Jem
     protected FluentWait<WebDriver> waiter() {
         return (new WebDriverWait(web, 10)).ignoring(NoSuchElementException.class);
+    }
+
+    protected ModalBox modal() {
+        return new ModalBox(web.findElement(By.id("cWindowContentOuter")));
+    }
+
+    protected WebElement logoutButton() {
+        // there are two logout anchor tags. Only the second one is visible/clickable.
+        return web.findElements(By.cssSelector("a[title='Logout']")).get(1);
     }
 
 }
