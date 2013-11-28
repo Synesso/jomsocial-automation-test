@@ -38,6 +38,15 @@ Create the file `.env` in the base of the project (same level as `build.gradle`)
     # The web driver to use. Choose from DriverName enum values (firefox/phantomjs) Defaults to phantomjs.
     WEB_DRIVER = firefox
 
+    # Setting User A login Credential
+	USER_A=usera
+	USER_A_PASSWORD=usera
+
+	# Setting User B login Credential
+
+	USER_B=userb
+	USER_B_PASSWORD=userb
+
 ## Testing
 
 For now there are problems with running the test via Gradle. Run the test in IntelliJ instead. First make sure JomSocial
